@@ -6,6 +6,7 @@ using Data.Interfaces;
 using Data.Repositories;
 using Domain.Entities;
 using FluentValidation;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;

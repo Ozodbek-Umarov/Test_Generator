@@ -38,12 +38,17 @@ public class TestService(IUnitOfWork unitOfWork,
         var options = await _unitOfWork.Option.GetAllAsync();
         var tests = await _unitOfWork.Test.GetAllAsync();
 
-        var entities = new List<TestDto>();
-        var testDtos = new List<TestDto>();
+        var random = new Random();
 
+        tests = tests.OrderBy(t => random.Next()).ToList();
+
+        var testDtos = new List<TestDto>();
         foreach (var test in tests)
         {
             var relatedOptions = options.Where(o => o.TestId == test.Id).ToList();
+
+            relatedOptions = relatedOptions.OrderBy(o => random.Next()).ToList();
+
             var testDto = new TestDto
             {
                 Id = test.Id,
