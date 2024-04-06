@@ -5,14 +5,14 @@ namespace Application.DTOs.OptionDtos;
 public class OptionDto : AddOptionDto
 {
     public int Id { get; set; }
-    public Test Test { get; set; } = null!;
 
     public static implicit operator OptionDto(Option option)
     {
         return new OptionDto()
         {
             Id = option.Id,
-            TestId = option.TestId
+            TestId = option.TestId,
+            Variant = option.Variant
         };
     }
     public static implicit operator Option(OptionDto option)
@@ -20,7 +20,8 @@ public class OptionDto : AddOptionDto
         return new OptionDto()
         {
             Id = option.Id,
-            TestId = option.TestId
+            TestId = option.TestId,
+            Variant = option.Variant
         };
     }
 }

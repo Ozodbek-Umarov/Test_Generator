@@ -39,19 +39,25 @@ public class TestService(IUnitOfWork unitOfWork,
         var tests = await _unitOfWork.Test.GetAllAsync();
 
         var entities = new List<TestDto>();
+        var testDtos = new List<TestDto>();
 
-        //foreach (var test in tests)
-        //{
-        //    var option = options.First(p => p.Id == test.Id);
-        //    var dto = (TestDto)option;
-        //    dto.Test = new Test()
-        //    {
-        //        Id = test.Id,
-        //        Question = test.Question,
-        //    };
-        //    entities.Add(dto);
-        //}
-        //return entities;
+        foreach (var test in tests)
+        {
+            var relatedOptions = options.Where(o => o.TestId == test.Id).ToList();
+            var testDto = new TestDto
+            {
+                Id = test.Id,
+                Question = test.Question,
+                Options = relatedOptions.Select(o => new OptionDto
+                {
+                    Id = o.Id,
+                    Variant = o.Variant,
+                    TestId = o.TestId
+                }).ToList()
+            };
+            testDtos.Add(testDto);
+        }
+        return testDtos;
     }
 
 
