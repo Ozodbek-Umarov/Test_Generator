@@ -7,7 +7,7 @@ namespace Data.Repositories;
 public class Repository<T>(AppDbContext dbContext)
     : IRepository<T> where T : BaseEntity
 {
-    private readonly AppDbContext _dbContext = dbContext;
+    protected readonly AppDbContext _dbContext = dbContext;
     private readonly DbSet<T> _dbSet = dbContext.Set<T>();
 
     public async Task CreateAsync(T entity)

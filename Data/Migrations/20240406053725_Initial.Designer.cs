@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240406013936_Initial")]
+    [Migration("20240406053725_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -53,10 +53,6 @@ namespace Data.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Question")
                         .IsRequired()

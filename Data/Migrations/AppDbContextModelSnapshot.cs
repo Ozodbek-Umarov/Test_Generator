@@ -51,10 +51,6 @@ namespace Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("text");
